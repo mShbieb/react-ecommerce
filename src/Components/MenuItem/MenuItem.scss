@@ -6,6 +6,8 @@
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    cursor: pointer;
+    user-select: none;
     .content{
         background-color: rgba(255, 255, 255, 0.7);
         padding: 15px 10px;
