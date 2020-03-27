@@ -1,10 +1,10 @@
 import React from "react";
-import './Home.scss';
+import './_Home.scss';
 
 import {Directory} from "../../Components/Directory/Directory";
 
 
-export const Home = () => (
+export const HomePage = () => (
     <div className="Home">
         <div className="container">
             <Directory />
