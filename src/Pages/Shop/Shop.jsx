@@ -12,9 +12,11 @@ class ShopPage extends Component{
     render() {
         return (
             <div>
-                {
-                    this.state.sections.map(section => <SectionPreview key={section.id} section={section} />)
-                }
+                <div className="container">
+                    {
+                        this.state.sections.map(section => <SectionPreview key={section.id} section={section} />)
+                    }
+                </div>
             </div>
         );
     }

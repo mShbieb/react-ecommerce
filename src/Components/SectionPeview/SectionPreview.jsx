@@ -1,15 +1,12 @@
 import React from "react";
 import './_SectionPreview.scss';
+import {ProductItem} from "../ProductItem/ProductItem";
 
 export const SectionPreview = ({section}) => (
-    <div>
+    <div className='SectionPreview'>
         <h3>{ section.title }</h3>
         <div className="row">
-            {section.items.map(item => (
-                <div className='col-md-3'>
-                    {item.name}
-                </div>
-            ))}
+            {section.items.slice(0, 4).map(item => <ProductItem key={item.id} item={item} />)}
         </div>
     </div>
 );
