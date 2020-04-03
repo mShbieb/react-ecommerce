@@ -14,9 +14,18 @@ class SignUp extends React.Component{
 
     handelSubmit = async event => {
         event.preventDefault();
-        const {displayName, email, password} = this.state;
-        const { user } = await auth.createUserWithEmailAndPassword(email, password);
-        await createUserProfile(user, {displayName});
+        try{
+            const {displayName, email, password} = this.state;
+            const { user } = await auth.createUserWithEmailAndPassword(email, password);
+            await createUserProfile(user, {displayName});
+            this.setState({
+                displayName: '',
+                email: '',
+                password: '',
+            });
+        }catch (e) {
+
+        }
     };
 
     handelChange = event => {
