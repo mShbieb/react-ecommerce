@@ -2,6 +2,8 @@ import React from "react";
 import {Field} from "../../Components/Field/Field";
 import {CustomButton} from "../../Components/CustomButton/CustomButton";
 
+import {signInWithGoogle} from "../../firebase/firebase";
+
 class SignIn extends React.Component{
 
     state = {
@@ -25,7 +27,8 @@ class SignIn extends React.Component{
                 <form onSubmit={this.handelSubmit}>
                     <Field label='Email'  name='email' type='email' handelChange={this.handelChange} />
                     <Field label='Password' name='password' type='password' handelChange={this.handelChange} />
-                    <CustomButton text='login' type='submit' />
+                    <CustomButton className='mr-2' text='login' type='submit' />
+                    <CustomButton text='Sign in with google' onClick={signInWithGoogle} />
                 </form>
             </div>
         );

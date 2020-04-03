@@ -2,8 +2,9 @@ import React from "react";
 import './_Header.scss';
 
 import { Link } from "react-router-dom";
+import {auth} from "./../../firebase/firebase";
 
-export const Header = () => (
+export const Header = ({ user }) => (
     <div className='Header'>
         <div className="container">
             <nav className="navbar navbar-expand-lg navbar-light">
@@ -20,7 +21,12 @@ export const Header = () => (
                             <Link to="/shop" className="nav-link" >Shop</Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/sign-in" className="nav-link" >Sign in</Link>
+                            {
+                                user
+                                    ? <span style={{cursor: 'pointer'}} className="nav-link" onClick={() => auth.signOut()}>Sign out</span>
+                                    : <Link to="/sign-in" className="nav-link" >Sign in</Link>
+                            }
+
                         </li>
                     </ul>
                 </div>
