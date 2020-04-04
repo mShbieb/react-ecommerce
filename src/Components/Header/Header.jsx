@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { Link } from "react-router-dom";
 import {auth} from "./../../firebase/firebase";
+import CartIcon from "../CartIcon/CartIcon";
 
 const Header = ({user}) => (
     <div className='Header'>
@@ -28,6 +29,9 @@ const Header = ({user}) => (
                                     : <Link to="/sign-in" className="nav-link" >Sign in</Link>
                             }
 
+                        </li>
+                        <li className="nav-item">
+                            <CartIcon />
                         </li>
                     </ul>
                 </div>

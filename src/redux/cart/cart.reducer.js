@@ -1,16 +1,16 @@
-import {userActionTypes} from "./user.types";
+import {cartActionTypes} from "./cart.types";
 
 const initState = {
-    user: null,
+    dropdown_status: false,
 };
 
 
 const cartReducer = (state = initState, action) => {
     switch (action.type) {
-        case userActionTypes.SET_USER:
+        case cartActionTypes.TOGGLE_DROPDOWN_STATUS:
             return {
                 ...state,
-                user: action.payload,
+                dropdown_status: !state.dropdown_status,
             };
         default:
             return state;
