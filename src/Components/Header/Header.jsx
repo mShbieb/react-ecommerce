@@ -1,10 +1,11 @@
 import React from "react";
 import './_Header.scss';
+import { connect } from 'react-redux';
 
 import { Link } from "react-router-dom";
 import {auth} from "./../../firebase/firebase";
 
-export const Header = ({ user }) => (
+const Header = ({user}) => (
     <div className='Header'>
         <div className="container">
             <nav className="navbar navbar-expand-lg navbar-light">
@@ -34,3 +35,10 @@ export const Header = ({ user }) => (
         </div>
     </div>
 );
+
+
+const mapStateToProps = state => ({
+    user: state.auth.user,
+});
+
+export default connect(mapStateToProps)(Header);
