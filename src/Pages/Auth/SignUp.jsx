@@ -2,7 +2,7 @@ import React from "react";
 import {Field} from "../../Components/Field/Field";
 import {CustomButton} from "../../Components/CustomButton/CustomButton";
 import {auth, createUserProfile} from "../../firebase/firebase";
-
+import {withRouter} from 'react-router-dom';
 
 class SignUp extends React.Component{
 
@@ -23,6 +23,7 @@ class SignUp extends React.Component{
                 email: '',
                 password: '',
             });
+            this.props.history.push('/');
         }catch (e) {
 
         }
@@ -48,4 +49,4 @@ class SignUp extends React.Component{
     }
 }
 
-export default SignUp;
+export default withRouter(SignUp);

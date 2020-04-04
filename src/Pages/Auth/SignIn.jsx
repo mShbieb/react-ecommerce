@@ -1,6 +1,7 @@
 import React from "react";
 import {Field} from "../../Components/Field/Field";
 import {CustomButton} from "../../Components/CustomButton/CustomButton";
+import {withRouter} from 'react-router-dom';
 
 import {auth, createUserProfile, signInWithGoogle} from "../../firebase/firebase";
 
@@ -20,6 +21,7 @@ class SignIn extends React.Component{
                 email: '',
                 password: '',
             });
+            this.props.history.push('/');
         }catch (e) {
 
         }
@@ -45,4 +47,4 @@ class SignIn extends React.Component{
     }
 }
 
-export default SignIn;
+export default withRouter(SignIn);
