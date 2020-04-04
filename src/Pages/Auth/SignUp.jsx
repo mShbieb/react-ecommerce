@@ -23,7 +23,6 @@ class SignUp extends React.Component{
                 email: '',
                 password: '',
             });
-            this.props.history.push('/');
         }catch (e) {
 
         }
@@ -49,4 +48,4 @@ class SignUp extends React.Component{
     }
 }
 
-export default withRouter(SignUp);
+export default SignUp;

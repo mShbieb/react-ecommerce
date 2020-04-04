@@ -21,7 +21,6 @@ class SignIn extends React.Component{
                 email: '',
                 password: '',
             });
-            this.props.history.push('/');
         }catch (e) {
 
         }
@@ -47,4 +46,4 @@ class SignIn extends React.Component{
     }
 }
 
-export default withRouter(SignIn);
+export default SignIn;
