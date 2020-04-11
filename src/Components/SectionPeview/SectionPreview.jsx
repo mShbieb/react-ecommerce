@@ -1,6 +1,6 @@
 import React from "react";
 import './_SectionPreview.scss';
-import {ProductItem} from "../ProductItem/ProductItem";
+import ProductItem from "../ProductItem/ProductItem";
 
 export const SectionPreview = ({section}) => (
     <div className='SectionPreview'>

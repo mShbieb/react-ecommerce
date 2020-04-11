@@ -4,26 +4,43 @@ import {CustomButton} from "../CustomButton/CustomButton";
 import {connect} from 'react-redux';
 import {toggleDropdownStatus} from "../../redux/cart/cart.action";
 
-const CardDropdown = () => (
+
+
+const CartItem = ({item}) => (
+    <div className='CartItem'>
+        <img src={item.imageUrl} alt=""/>
+        <div>
+            <p>{ item.name }</p>
+            <p>{ item.price }</p>
+        </div>
+    </div>
+);
+
+
+const CardDropdown = ({items}) => (
     <div className="card-dropdown">
-        <div className="item-list"></div>
+        <div className="item-list">
+            { items.map(item => <CartItem item={item} /> ) }
+        </div>
         <CustomButton text='Checkout' />
     </div>
 );
 
-const CartIcon = ({ dropdown_status, toggleDropdown }) => (
+const CartIcon = ({ dropdown_status, toggleDropdown, items }) => (
     <div className='CartIcon'>
         <div onClick={toggleDropdown}>
-            Cart: <span>0</span>
+            Cart: <span>{items.length}</span>
         </div>
-        {dropdown_status ? <CardDropdown /> : null}
+        {dropdown_status ? <CardDropdown items={items} /> : null}
     </div>
 );
 
 
 const mapStateToProps = state => ({
     dropdown_status: state.cart.dropdown_status,
+    items: state.cart.items,
 });
+
 const mapDispatchToProps = dispatch => ({
     toggleDropdown: () => dispatch(toggleDropdownStatus()),
 });

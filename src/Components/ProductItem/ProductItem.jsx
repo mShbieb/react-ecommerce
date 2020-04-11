@@ -1,10 +1,12 @@
 import React from "react";
 import './_ProductItem.scss';
+import { connect } from 'react-redux';
+import {addToCart} from "../../redux/cart/cart.action";
 
-export const ProductItem = ({item}) => (
+const ProductItem = ({item, addToCart}) => (
     <div  className='col-md-3 ProductItem'>
         <div style={{ backgroundImage: `url(${item.imageUrl})` }} className='image' >
-            <div>add to cart</div>
+            <div onClick={() => addToCart(item)}>add to cart</div>
         </div>
         <div className="__footer">
             <span>{ item.name }</span>
@@ -12,3 +14,11 @@ export const ProductItem = ({item}) => (
         </div>
     </div>
 );
+
+
+const mapDispatchToProps = dispatch => ({
+    addToCart: item => dispatch(addToCart(item))
+});
+
+
+export default connect(null, mapDispatchToProps)(ProductItem);
