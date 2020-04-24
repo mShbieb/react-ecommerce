@@ -3,6 +3,7 @@ import './CartIcon.scss';
 import {CustomButton} from "../CustomButton/CustomButton";
 import {connect} from 'react-redux';
 import {toggleDropdownStatus} from "../../redux/cart/cart.action";
+import {itemCount, items} from "../../redux/cart/cart.getters";
 
 
 
@@ -11,7 +12,7 @@ const CartItem = ({item}) => (
         <img src={item.imageUrl} alt=""/>
         <div>
             <p>{ item.name }</p>
-            <p>{ item.price } × { item.quantity }</p>
+            <p>${ item.price } × { item.quantity }</p>
         </div>
     </div>
 );
@@ -26,10 +27,10 @@ const CardDropdown = ({items}) => (
     </div>
 );
 
-const CartIcon = ({ dropdown_status, toggleDropdown, items }) => (
+const CartIcon = ({ dropdown_status, toggleDropdown, items, itemCount }) => (
     <div className='CartIcon'>
         <div onClick={toggleDropdown}>
-            Cart: <span>{items.length}</span>
+            Cart: <span>{itemCount}</span>
         </div>
         {dropdown_status ? <CardDropdown items={items} /> : null}
     </div>
@@ -38,7 +39,8 @@ const CartIcon = ({ dropdown_status, toggleDropdown, items }) => (
 
 const mapStateToProps = state => ({
     dropdown_status: state.cart.dropdown_status,
-    items: state.cart.items,
+    items: items(state),
+    itemCount: itemCount(state),
 });
 
 const mapDispatchToProps = dispatch => ({
