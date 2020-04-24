@@ -21,9 +21,20 @@
         .item-list{
             height: 80%;
             width: 100%;
+            overflow-y: auto;
+            .CartItem{
+                padding: 15px;
+                display: flex;
+                border-bottom: 1px solid #d0d0d0;
+                img{
+                    width: 69px;
+                    height: 80px;
+                    margin-right: 10px;
+                }
+            }
         }
         button{
-            margin: 0 auto;
+            margin: 15px auto 0;
         }
     }
 }
