@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import { connect, d } from 'react-redux';
+import { connect } from 'react-redux';
 import './App.scss';
 import {HomePage} from "./Pages/Home/Home";
 import ShopPage from "./Pages/Shop/Shop";

@@ -2,8 +2,9 @@ import React from "react";
 import './CartIcon.scss';
 import {CustomButton} from "../CustomButton/CustomButton";
 import {connect} from 'react-redux';
+import {createStructuredSelector} from 'reselect';
 import {toggleDropdownStatus} from "../../redux/cart/cart.action";
-import {itemCount, items} from "../../redux/cart/cart.getters";
+import {dropdownStatus, itemCount, items} from "../../redux/cart/cart.getters";
 
 
 
@@ -37,10 +38,10 @@ const CartIcon = ({ dropdown_status, toggleDropdown, items, itemCount }) => (
 );
 
 
-const mapStateToProps = state => ({
-    dropdown_status: state.cart.dropdown_status,
-    items: items(state),
-    itemCount: itemCount(state),
+const mapStateToProps = createStructuredSelector({
+    dropdown_status: dropdownStatus,
+    items: items,
+    itemCount: itemCount,
 });
 
 const mapDispatchToProps = dispatch => ({
