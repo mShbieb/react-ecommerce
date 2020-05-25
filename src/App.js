@@ -8,6 +8,7 @@ import Header from "./Components/Header/Header";
 import {AuthPage} from "./Pages/Auth/Auth";
 import {auth, createUserProfile} from "./firebase/firebase";
 import {setUser} from "./redux/auth/user.action";
+import CheckoutPage from "./Pages/Checkout/Checkout";
 
 
 class App extends Component{
@@ -41,6 +42,7 @@ class App extends Component{
                 <Switch>
                     <Route exact path='/' component={HomePage} />
                     <Route exact path='/shop' component={ShopPage} />
+                    <Route exact path='/checkout' component={CheckoutPage} />
                     <Route exact path='/sign-in' render={() => this.props.user ? <Redirect to='/' /> : <AuthPage />} />
                 </Switch>
             </div>

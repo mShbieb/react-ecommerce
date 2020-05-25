@@ -15,3 +15,21 @@ export const addItemToCart = (items, product) => {
 
     return [...items, {...product, quantity: 1}]
 };
+
+
+export const updateCartItem = (items, product) => {
+
+    let cartItem = items.find(item => item.id === product.id);
+
+    if (cartItem){
+        return  items.map(item => {
+            if (item.id === product.id){
+                return {...item}
+            }
+            return item;
+        });
+    }
+
+    return [...items];
+};
+

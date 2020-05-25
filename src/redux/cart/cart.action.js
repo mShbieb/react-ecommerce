@@ -10,3 +10,14 @@ export const addToCart = product => ({
     type: cartActionTypes.ADD_TO_CART,
     payload: product,
 });
+
+export const updateCartItem = item => ({
+    type: cartActionTypes.UPDATE_CART_ITEM,
+    payload: item,
+});
+
+
+export const deleteCartItem = item => ({
+    type: cartActionTypes.DELETE_CART_ITEM,
+    payload: item,
+});

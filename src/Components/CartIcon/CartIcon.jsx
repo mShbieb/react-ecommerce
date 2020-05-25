@@ -5,6 +5,8 @@ import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 import {toggleDropdownStatus} from "../../redux/cart/cart.action";
 import {dropdownStatus, itemCount, items} from "../../redux/cart/cart.getters";
+import { withRouter } from 'react-router-dom';
+
 
 
 
@@ -19,21 +21,28 @@ const CartItem = ({item}) => (
 );
 
 
-const CardDropdown = ({items}) => (
+const CardDropdown = withRouter(({items, toggleDropdown, history}) => (
     <div className="card-dropdown">
         <div className="item-list">
-            { items.map(item => <CartItem item={item} /> ) }
+            {
+                items.length
+                ? items.map(item => <CartItem item={item} /> )
+                : <span>Empty cart</span>
+            }
         </div>
-        <CustomButton text='Checkout' />
+        <CustomButton onClick={() => {
+            history.push('/checkout');
+            toggleDropdown();
+        }} text='Checkout' />
     </div>
-);
+));
 
 const CartIcon = ({ dropdown_status, toggleDropdown, items, itemCount }) => (
     <div className='CartIcon'>
         <div onClick={toggleDropdown}>
             Cart: <span>{itemCount}</span>
         </div>
-        {dropdown_status ? <CardDropdown items={items} /> : null}
+        {dropdown_status ? <CardDropdown toggleDropdown={toggleDropdown} items={items} /> : null}
     </div>
 );
 
