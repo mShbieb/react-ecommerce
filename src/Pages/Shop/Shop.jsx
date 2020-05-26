@@ -1,21 +1,18 @@
 import React, { Component } from "react";
-import SHOP_DATA from './shop.data';
+import {connect} from 'react-redux';
+
 import './_Shop.scss';
-import {SectionPreview} from "../../Components/SectionPeview/SectionPreview";
+import SectionsPreview from "../../Components/SectionsPreview/SectionsPreview";
+
 
 
 class ShopPage extends Component{
-    state = {
-        sections: SHOP_DATA,
-    };
 
     render() {
         return (
             <div>
                 <div className="container">
-                    {
-                        this.state.sections.map(section => <SectionPreview key={section.id} section={section} />)
-                    }
+                    <SectionsPreview />
                 </div>
             </div>
         );
@@ -23,5 +20,4 @@ class ShopPage extends Component{
 }
 
 
-
-export default ShopPage;
+export default connect()(ShopPage);
