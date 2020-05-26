@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import {items} from "../../redux/cart/cart.getters";
+import {items, itemTotal} from "../../redux/cart/cart.getters";
 import NumericInput from 'react-numeric-input';
 import {deleteCartItem, updateCartItem} from "../../redux/cart/cart.action";
 
@@ -28,9 +28,9 @@ const CartItem = ({item, updateCartItem, deleteCartItem}) => (
 );
 
 
-const CheckoutPage = ({items, updateCartItem, deleteCartItem}) => (
+const CheckoutPage = ({items, updateCartItem, deleteCartItem, itemTotal}) => (
     <div className='container'>
-        <table className="table">
+        <table className="table table-bordered ">
             <thead>
                 <tr>
                     <th>Image</th>
@@ -46,6 +46,12 @@ const CheckoutPage = ({items, updateCartItem, deleteCartItem}) => (
             </tbody>
         </table>
 
+        <div className="row mt-2">
+            <div className="col-12 d-flex justify-content-end">
+                <h3>Total: ${itemTotal}</h3>
+            </div>
+        </div>
+
     </div>
 )
 
@@ -53,6 +59,7 @@ const CheckoutPage = ({items, updateCartItem, deleteCartItem}) => (
 
 const mapStateToProps = createStructuredSelector({
     items: items,
+    itemTotal: itemTotal,
 });
 
 const mapDispatcherToProps = dispatch => ({
