@@ -15,7 +15,7 @@ class ShopPage extends Component{
             <div>
                 <div className="container">
                     <Route exact path={this.props.match.path} component={SectionsPreview} />
-                    <Route  path={this.props.match.path + '/:category'} component={CategoryPage} />
+                    <Route path={this.props.match.path + '/:category'} component={CategoryPage} />
                 </div>
             </div>
         );

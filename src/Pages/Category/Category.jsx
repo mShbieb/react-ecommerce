@@ -2,14 +2,16 @@ import React from "react";
 import {connect} from 'react-redux';
 import './_Category.scss';
 import {sectionByName} from "../../redux/shops/shops.getters";
+import ProductItem from "../../Components/ProductItem/ProductItem";
 
 
 const CategoryPage = ({match, section}) => {
-    console.log(match.params.category);
     return (
         <div>
-            <h3>Category Page</h3>
-            <h3>{ section.name }</h3>
+            <h3 className='mb-5'>{ section.title }</h3>
+            <div className="row">
+                {section.items.map(item => <ProductItem className='mb-4' key={item.id} item={item} />)}
+            </div>
         </div>
     )
 };
